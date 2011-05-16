@@ -1,0 +1,29 @@
+<div style="position : relative;" class="show_html">
+  <% if session["article_"+params[:id]]!='checked' %>
+    <input id="vote_right" class="vote_on" type="image" src="/images/right.png" onclick="vote_right(<%=@article.id%>)"/>
+    <input id="vote_wrong" class="vote_down" type="image" src="/images/wrong.png" onclick="vote_wrong(<%=@article.id%>)"/>
+    <% puts session["article_"+params[:id]] %>
+  <% else %>
+    <input id="vote_right" class="vote_on" type="image" src="/images/right-disabled.png"/>
+    <input id="vote_wrong" class="vote_down" type="image" src="/images/wrong-disabled.png"/>
+  <% end %>
+  <input class="article_page_close" type="image" src='/images/close.png' onclick="hide_preview()"/>
+  <div class="article_page_title"><%=@article.title%></div>
+  <div class="article_page_content"/><%=@article.article%></br></br> <img src="<%= @article.main_url%>" /></div>
+
+  <div class="comment_box">
+    <div><input type="text" id="comment"/><input type="button" value="write" onclick="write_comment(<%=@article.id%>)"/></div>
+
+    <div class="user_comments" id="user_comments">
+     <% for comment in @comments %>
+        <div class="each_comment">
+          <img class="user_pic" src="/<%=comment.user_photo_url%>"/>
+          <div class="user_name"><%=comment.user_name%></div>
+          <div class="user_comment"><%=comment.comment%></div>
+          <div class="created_at"><%=controller.time_ago(comment.created_at)%></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

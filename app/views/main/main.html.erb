@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+  <head>
+  <%= javascript_include_tag 'rails' %>
+  <%=csrf_meta_tag %>
+  <script src="/javascripts/jquery-1.5.2.js"></script>
+  <script src="/javascripts/project-scripts/main.js"></script>
+	</head>
+  <body>
+  <form accept-charset="UTF-8" action="/user_sessions/login" class="user_data" id="user" method="post" style="height:20px;">
+  <div class="login_frame">
+      Not user? Click <a href="/users/new">here</a> to register.
+      login <input type="text"/>
+      password <input type="password"/>
+      <input type="submit" value="Login"/>
+  </div>
+  </form>
+		<div class="head_frame">
+    <div>UNEWS</div>
+    <input type="image" class="write_button" onclick="vise_versa_display()" src="/images/write.png" />
+    </div>
+
+   <div class="main_frame">    
+   
+    <div class="write_form" id="article_form">
+      <form accept-charset="UTF-8" action="/articles" class="new_article" id="new_article" method="post" enctype="multipart/form-data">
+      <div style="margin:0;padding:0;display:inline">
+      <div>title <input class="title" id="article_title" name="article[title]" size="30" type="text" maxlength="100" /></div>
+      <div>content</div>
+      <textarea cols="40" id="article_article" name="article[article]" rows="10"></textarea>
+      <div>related image</div>
+      <input type="file" name="article[article_photo]" size="50"/>
+        <div>by<input class="writer_name" id="article_writer_name" name="article[writer_name]" size="30" type="text" value="anonymous" /></div>
+        <input class="cordinance" id="cord_x" name="article[cord_x]" type="text" value="0"/>
+        <input class="cordinance" id="cord_y" name="article[cord_y]" type="text" value="0"/>
+        <input class="paste" type="image" src="/images/paste.png" onclick="adjust_article()"/>
+        <input class="close_form" type="image" src="/images/close.png" onclick="hide_form()"/>
+      </div>
+      </form>
+    </div>
+
+      <div id="article_preview" class="preview"></div>
+  
+    </div>
+
+<%for article in @articles %>
+  <div class="article" id="<%=article.id%>" onClick = "click_on_article(this)" 
+                                            onMouseOver="cursor_on_article(this)"
+                                            onMouseOut="cursor_out_article(this)"
+                                            style="top : <%=article.cord_y%>px; left : <%=article.cord_x%>px; font-size : <%=(article.font_size)%>px">
+                                            <%=article.title%>
+                                            <div class="article_created_at"><%=controller.time_ago(article.created_at)%></div>
+</div>
+<%end%>
+
+<div ID=OuterDiv>
+  <div id=iit class="cursor">
+    <div id="new_title"/> 
+  </div>
+</div>
+
+
+
+	</body>
+</html>

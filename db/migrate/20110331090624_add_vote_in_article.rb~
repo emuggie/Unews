@@ -1,0 +1,9 @@
+class AddVoteInArticle < ActiveRecord::Migration
+  def self.up
+	  add_column :articles :real, :integer, :default => 0
+	  add_column :articles :fake,:integer, :default => 0
+  end
+
+  def self.down
+  end
+end

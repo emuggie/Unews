@@ -1,0 +1,43 @@
+div.article_form
+{
+  margin-left : auto;
+  margin-right : auto;
+  background : grey;
+  width : 800px
+  height : auto;
+}
+form
+{
+  margin-left : auto;
+  margin-right: auto;
+  width :800px;
+  height : 1000px;
+  color : white;
+}
+input.title
+{
+  margin-left : auto;
+  margin-right : auto;
+  text-align : center;
+  width : 800px;
+}
+input.write_button
+{
+  margin-left : auto;
+  margin-right : auto;
+  width : 200px
+  height : 100px;
+}
+textarea
+{
+  margin-left : auto;
+  margin-right :auto;
+  width : 800px
+}
+input.size_button
+{
+  width : 100px;
+  height : 100px;
+}
+}
+

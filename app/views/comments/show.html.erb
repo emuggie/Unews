@@ -1,0 +1,9 @@
+<% for comment in @comments %>
+  <div style="background : green; position:relative;">
+  <img class="user_pic" src="<%=comment.user_photo_url%>"/>
+  <div class="user_name"><%=comment.user_name%></div>
+  <div class="user_comment"><%=comment.comment%></div>
+  <div class="created_at"><%=comment.created_at%></div>
+  </div>
+<% end %>
+

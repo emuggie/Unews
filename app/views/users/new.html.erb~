@@ -1,0 +1,11 @@
+<% form_for @user do |f| %>
+    <p>name</p>
+    <%=f.text_field :name%>
+    <p>email</p>
+    <%=f.text_field :email%>
+    <p>password</p>
+    <%=f.password_field :password%>
+    <p>photo</p>
+    <%=f.file_field :user_photo%>
+    <%=f.submit :register%>
+<%end%>
